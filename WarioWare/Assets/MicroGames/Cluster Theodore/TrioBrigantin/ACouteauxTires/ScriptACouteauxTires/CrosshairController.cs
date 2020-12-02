@@ -17,25 +17,21 @@ namespace TrioBrigantin
 
 			Rigidbody2D crosshairRb;
 
-			static public CrosshairController instance = null;
+			static public CrosshairController instance;
 
 			// movement direction variables
 			float horizontal = 0, vertical = 0;
 			Vector2 movementVector = Vector2.zero;
 
             //target enemy
-            public Enemy targetEnemy;
+            [HideInInspector] public Enemy targetEnemy = null;
             #endregion
             private void Awake()
             {
 				if(instance == null)
-                {
 					instance = this;
-                }
                 else
-                {
 					Destroy(gameObject);
-                }
 				
 			}
             // Start is called before the first frame update
@@ -80,7 +76,7 @@ namespace TrioBrigantin
 					}
 
 					//spawn crooshair grey copy
-					//ammo--;
+					ACouteauxTiré_Manager.instance.MinusAmmo();
 				}
 			}
 		}

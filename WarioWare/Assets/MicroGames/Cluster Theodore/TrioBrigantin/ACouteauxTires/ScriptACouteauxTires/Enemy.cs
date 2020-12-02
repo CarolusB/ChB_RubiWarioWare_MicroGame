@@ -13,8 +13,6 @@ namespace TrioBrigantin
 
 			[Range(1,2)]
 			[SerializeField] int needLock = 1;
-
-			bool isKilled;
 			#endregion
 
 			// Start is called before the first frame update
@@ -49,7 +47,8 @@ namespace TrioBrigantin
                 {
 					//Manager enemyKilled++;
 					detectZone.enabled = false;
-					isKilled = true;
+					CrosshairController.instance.targetEnemy = null;
+					ACouteauxTiré_Manager.instance.enemiesKilled.Add(gameObject);
                 }
             }
         }
