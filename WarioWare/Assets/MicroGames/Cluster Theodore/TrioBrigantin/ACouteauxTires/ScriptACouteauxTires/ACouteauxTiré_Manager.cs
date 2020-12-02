@@ -28,30 +28,30 @@ namespace TrioBrigantin
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
-
+                ammo = numberOfEnemies;
             }
 
             //FixedUpdate is called on a fixed time.
             public override void FixedUpdate()
             {
                 base.FixedUpdate(); //Do not erase this line!
-                if (ammo == 0 && enemiesKilled.Count == numberOfEnemies)
-                {
-                    Manager.Instance.Result(true);
-                }
+                //if (ammo == 0 && enemiesKilled.Count == numberOfEnemies)
+                //{
+                //    Manager.Instance.Result(true);
+                //}
             }
 
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                //if((Tick == 8 || ammo == 0) && enemiesKilled.Count < numberOfEnemies)
-                //{
-                //    Manager.Instance.Result(false);
-                //}
-                //else if (ammo == 0 && enemiesKilled.Count == numberOfEnemies)
-                //{
-                //    Manager.Instance.Result(true);
-                //}
+                if ((Tick == 8 || ammo == 0) && enemiesKilled.Count < numberOfEnemies)
+                {
+                    Manager.Instance.Result(false);
+                }
+                else if (ammo == 0 && enemiesKilled.Count == numberOfEnemies)
+                {
+                    Manager.Instance.Result(true);
+                }
             }
 
             public void MinusAmmo()
