@@ -11,6 +11,9 @@ namespace TrioBrigantin
 			#region Variables
 			CircleCollider2D detectZone;
 
+			//placeholder feedbacks
+			SpriteRenderer mySprite;
+
 			[Range(1,2)]
 			[SerializeField] int needLock = 1;
 			#endregion
@@ -19,6 +22,7 @@ namespace TrioBrigantin
 			void Start()
 			{
 				detectZone = GetComponent<CircleCollider2D>();
+				mySprite = GetComponent<SpriteRenderer>();
 			}
 
             #region Trigger calls
@@ -27,6 +31,7 @@ namespace TrioBrigantin
                 if(collision.gameObject == CrosshairController.instance.gameObject)
                 {
 					CrosshairController.instance.targetEnemy = this;
+					mySprite.color = Color.blue;
                 }
             }
 
@@ -35,6 +40,7 @@ namespace TrioBrigantin
 				if (collision.gameObject == CrosshairController.instance.gameObject)
 				{
 					CrosshairController.instance.targetEnemy = null;
+					mySprite.color = Color.white;
 				}
 			}
             #endregion
@@ -49,7 +55,8 @@ namespace TrioBrigantin
 					detectZone.enabled = false;
 					CrosshairController.instance.targetEnemy = null;
 					ACouteauxTiré_Manager.instance.enemiesKilled.Add(gameObject);
-                }
+					mySprite.color = Color.magenta;
+				}
             }
         }
     }

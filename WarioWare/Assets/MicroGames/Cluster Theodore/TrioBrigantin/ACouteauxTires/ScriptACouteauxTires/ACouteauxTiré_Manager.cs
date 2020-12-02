@@ -12,7 +12,7 @@ namespace TrioBrigantin
             #region Variables
             static public ACouteauxTiré_Manager instance;
 
-            int numberOfEnemies;
+            [SerializeField] int numberOfEnemies; //Serialize field when testing
             int ammo;
             public List<GameObject> enemiesKilled = new List<GameObject>();
             #endregion
@@ -35,20 +35,23 @@ namespace TrioBrigantin
             public override void FixedUpdate()
             {
                 base.FixedUpdate(); //Do not erase this line!
-
+                if (ammo == 0 && enemiesKilled.Count == numberOfEnemies)
+                {
+                    Manager.Instance.Result(true);
+                }
             }
 
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                if((Tick == 8 || ammo == 0) && enemiesKilled.Count < numberOfEnemies)
-                {
-                    Manager.Instance.Result(false);
-                }
-                else if (ammo == 0 && enemiesKilled.Count == numberOfEnemies)
-                {
-                    Manager.Instance.Result(true);
-                }
+                //if((Tick == 8 || ammo == 0) && enemiesKilled.Count < numberOfEnemies)
+                //{
+                //    Manager.Instance.Result(false);
+                //}
+                //else if (ammo == 0 && enemiesKilled.Count == numberOfEnemies)
+                //{
+                //    Manager.Instance.Result(true);
+                //}
             }
 
             public void MinusAmmo()
