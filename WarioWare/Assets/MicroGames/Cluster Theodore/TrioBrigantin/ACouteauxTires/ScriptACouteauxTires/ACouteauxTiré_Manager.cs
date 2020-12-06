@@ -29,6 +29,7 @@ namespace TrioBrigantin
             {
                 base.Start(); //Do not erase this line!
                 ammo = numberOfEnemies;
+                Debug.Log("Ammo left: " + ammo);
             }
 
             //FixedUpdate is called on a fixed time.
@@ -44,6 +45,8 @@ namespace TrioBrigantin
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
+                Debug.Log("Ennemies locked: " + enemiesKilled.Count);
+
                 if ((Tick == 8 || ammo == 0) && enemiesKilled.Count < numberOfEnemies)
                 {
                     Manager.Instance.Result(false);
@@ -57,6 +60,7 @@ namespace TrioBrigantin
             public void MinusAmmo()
             {
                 ammo--;
+                Debug.Log("Ammo left: " + ammo);
             }
         }
     }

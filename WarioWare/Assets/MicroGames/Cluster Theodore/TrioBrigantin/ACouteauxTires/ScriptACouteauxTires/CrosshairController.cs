@@ -25,8 +25,12 @@ namespace TrioBrigantin
 
             //target enemy
             [HideInInspector] public Enemy targetEnemy = null;
-            #endregion
-            private void Awake()
+
+			//Lock feedback
+			[SerializeField] GameObject goodLock;
+			[SerializeField] GameObject wrongLock;
+			#endregion
+			private void Awake()
             {
 				if(instance == null)
 					instance = this;
@@ -71,11 +75,13 @@ namespace TrioBrigantin
 					if(targetEnemy != null)
                     {
 						targetEnemy.TakeLock();
-
-						//spawn yellow crosshair copy
+						Instantiate(goodLock, transform.position, Quaternion.identity);
 					}
-
-					//spawn crooshair grey copy
+                    else
+                    {
+						Instantiate(wrongLock, transform.position, Quaternion.identity);
+					}
+					
 					ACouteauxTiré_Manager.instance.MinusAmmo();
 				}
 			}

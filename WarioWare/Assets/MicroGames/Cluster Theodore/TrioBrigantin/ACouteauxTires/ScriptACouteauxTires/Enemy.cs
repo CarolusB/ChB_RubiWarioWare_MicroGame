@@ -6,10 +6,13 @@ namespace TrioBrigantin
 {
 	namespace CouteauxTires
 	{
+		/// <summary>
+		/// CHB -- Enemy behavior
+		/// </summary>
 		public class Enemy : MonoBehaviour
 		{
 			#region Variables
-			CircleCollider2D detectZone;
+			BoxCollider2D detectZone;
 
 			//placeholder feedbacks
 			SpriteRenderer mySprite;
@@ -21,7 +24,7 @@ namespace TrioBrigantin
 			// Start is called before the first frame update
 			void Start()
 			{
-				detectZone = GetComponent<CircleCollider2D>();
+				detectZone = GetComponent<BoxCollider2D>();
 				mySprite = GetComponent<SpriteRenderer>();
 			}
 
@@ -51,7 +54,6 @@ namespace TrioBrigantin
 
 				if(needLock == 0)
                 {
-					//Manager enemyKilled++;
 					detectZone.enabled = false;
 					CrosshairController.instance.targetEnemy = null;
 					ACouteauxTiré_Manager.instance.enemiesKilled.Add(gameObject);
