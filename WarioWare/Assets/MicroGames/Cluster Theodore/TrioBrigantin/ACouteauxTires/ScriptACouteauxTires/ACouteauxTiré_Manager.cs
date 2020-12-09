@@ -62,6 +62,14 @@ namespace TrioBrigantin
                 ammo--;
                 Debug.Log("Ammo left: " + ammo);
             }
+
+            public bool GetAmmoZero()
+            {
+                if (ammo == 0)
+                    return true;
+                else
+                    return false;
+            }
         }
     }
 }

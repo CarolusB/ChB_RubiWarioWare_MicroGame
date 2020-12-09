@@ -72,6 +72,9 @@ namespace TrioBrigantin
             {
                 if (Input.GetButtonDown("A_Button"))
                 {
+					if (ACouteauxTiré_Manager.instance.GetAmmoZero())
+						return;
+					
 					if(targetEnemy != null)
                     {
 						targetEnemy.TakeLock();
