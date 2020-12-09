@@ -45,10 +45,10 @@ namespace TrioBrigantin
 			}
 
             // Update is called once per frame
-            void FixedUpdate()
+            void Update()
 			{
-				Move();
 				Lock();
+				Move();
 			}
 
 			void Move()
@@ -72,6 +72,7 @@ namespace TrioBrigantin
             {
                 if (Input.GetButtonDown("A_Button"))
                 {
+					Debug.Log("Lock button pressed");
 					if (ACouteauxTiré_Manager.instance.GetAmmoZero())
 						return;
 					
