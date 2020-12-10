@@ -11,6 +11,7 @@ namespace TrioBrigantin
         {
             #region Variables
             static public ACouteauxTiré_Manager instance;
+            public ACouteauTires_SoundManager soundManager;
 
             [SerializeField] int numberOfEnemies; //Serialize field when testing
             int ammo;

@@ -465,6 +465,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1017621273369470957, guid: a602c6afe28d1b44b9608b8573b9dae5,
+        type: 3}
+      propertyPath: sourceGetter.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017621273369470957, guid: a602c6afe28d1b44b9608b8573b9dae5,
+        type: 3}
+      propertyPath: namePlayTest
+      value: SuperEnemyHey
+      objectReference: {fileID: 0}
     - target: {fileID: 2878189244181402985, guid: a602c6afe28d1b44b9608b8573b9dae5,
         type: 3}
       propertyPath: m_LocalPosition.x
