@@ -6,7 +6,7 @@ namespace TrioBrigantin
 {
 	namespace CouteauxTires
 	{
-		public class EnemySpawner : MonoBehaviour
+		public class EnemySpawnerMag : MonoBehaviour
 		{
 			#region Variables
 			[SerializeField] GameObject[] spawnPoints;

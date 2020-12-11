@@ -24,7 +24,7 @@ namespace TrioBrigantin
             [SerializeField] GameObject[] spawnSets;
             [SerializeField] GameObject spawnSetAnchor;
             GameObject chosenSpawnSet;
-            EnemySpawner chosenSpawner;
+            EnemySpawnerMag chosenSpawner;
 
             bool doSuperEnemySpawning;
             [Range(0, 15)]
@@ -122,9 +122,10 @@ namespace TrioBrigantin
             void InstantiateSpawner(GameObject _spawnSet)
             {
                 chosenSpawnSet = Instantiate(_spawnSet, spawnSetAnchor.transform.position, Quaternion.identity);
-                chosenSpawner = chosenSpawnSet.GetComponent<EnemySpawner>();
+                chosenSpawner = chosenSpawnSet.GetComponent<EnemySpawnerMag>();
                 chosenSpawner.GetEnemyNumber(numberOfEnemies, doSuperEnemySpawning);
                 chosenSpawner.SpawnBehavior();
+                Debug.Log(chosenSpawnSet.name + " was instatiated");
             }
 
             bool DecideSuperEnemySpawn()

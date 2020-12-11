@@ -60,6 +60,16 @@ MonoBehaviour:
   soundManager: {fileID: 1017621273369470957}
   numberOfEnemies: 3
   enemiesKilled: []
+  baseEnemy: {fileID: 4102397216850529005, guid: 17e20a334547dcf4097384fab710a1fb,
+    type: 3}
+  superEnemy: {fileID: 4102397216850529005, guid: 8ce6271efbc22e64bbf66627b2a51df6,
+    type: 3}
+  spawnSets:
+  - {fileID: 8238406619026050948, guid: 086b3af8f1fc6de45a05d497a2d39af5, type: 3}
+  - {fileID: 8238406619026050948, guid: 086b3af8f1fc6de45a05d497a2d39af5, type: 3}
+  - {fileID: 0}
+  spawnSetAnchor: {fileID: 0}
+  superEnemyChance: 4
 --- !u!114 &1017621273369470957
 MonoBehaviour:
   m_ObjectHideFlags: 0
