@@ -13,9 +13,22 @@ namespace TrioBrigantin
             static public ACouteauxTiré_Manager instance;
             public ACouteauTires_SoundManager soundManager;
 
+            [Header("Enemy Setup Fields")]
+
             [SerializeField] int numberOfEnemies; //Serialize field when testing
             int ammo;
-            public List<GameObject> enemiesKilled = new List<GameObject>();
+            [HideInInspector] public List<GameObject> enemiesKilled = new List<GameObject>();
+
+            public GameObject baseEnemy;
+            public GameObject superEnemy;
+            [SerializeField] GameObject[] spawnSets;
+            [SerializeField] GameObject spawnSetAnchor;
+            GameObject chosenSpawnSet;
+            EnemySpawner chosenSpawner;
+
+            bool doSuperEnemySpawning;
+            [Range(0, 15)]
+            [SerializeField] int superEnemyChance = 4; //Probability of Super Enemy, 0 means will be sure to not spawn
             #endregion
 
             private void Awake()
@@ -29,7 +42,39 @@ namespace TrioBrigantin
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
-                ammo = numberOfEnemies;
+
+                switch (currentDifficulty)
+                {
+                    case Manager.Difficulty.EASY:
+                        numberOfEnemies = 3;
+                        ammo = numberOfEnemies;
+                        break;
+
+                    case Manager.Difficulty.MEDIUM:
+                        numberOfEnemies = 4;
+                        doSuperEnemySpawning = DecideSuperEnemySpawn();
+
+                        if (doSuperEnemySpawning)
+                            ammo = numberOfEnemies + 1;
+                        else
+                            ammo = numberOfEnemies;
+
+                        break;
+
+                    case Manager.Difficulty.HARD:
+                        numberOfEnemies = 5;
+                        doSuperEnemySpawning = DecideSuperEnemySpawn();
+
+                        if (doSuperEnemySpawning)
+                            ammo = numberOfEnemies + 1;
+                        else
+                            ammo = numberOfEnemies;
+
+                        break;
+                }
+                
+                InstantiateSpawner(spawnSets[(int)currentDifficulty]);
+
                 Debug.Log("Ammo left: " + ammo);
             }
 
@@ -58,6 +103,7 @@ namespace TrioBrigantin
                 }
             }
 
+            #region AmmoInteraction
             public void MinusAmmo()
             {
                 ammo--;
@@ -70,6 +116,28 @@ namespace TrioBrigantin
                     return true;
                 else
                     return false;
+            }
+            #endregion
+
+            void InstantiateSpawner(GameObject _spawnSet)
+            {
+                chosenSpawnSet = Instantiate(_spawnSet, spawnSetAnchor.transform.position, Quaternion.identity);
+                chosenSpawner = chosenSpawnSet.GetComponent<EnemySpawner>();
+                chosenSpawner.GetEnemyNumber(numberOfEnemies, doSuperEnemySpawning);
+                chosenSpawner.SpawnBehavior();
+            }
+
+            bool DecideSuperEnemySpawn()
+            {
+                int superSpawnChance = Random.Range(1, 101);
+                if(superSpawnChance <= superEnemyChance)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
     }
