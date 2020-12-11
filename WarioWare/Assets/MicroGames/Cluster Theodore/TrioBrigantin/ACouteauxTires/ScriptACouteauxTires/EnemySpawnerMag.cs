@@ -34,6 +34,7 @@ namespace TrioBrigantin
 							if (enemiesLeftToSpawn == 1)
 							{
 								InstEnemy(ACouteauxTiré_Manager.instance.superEnemy, e);
+								superEnemyIsSpawned = true;
 							}
                             else
                             {
@@ -81,7 +82,8 @@ namespace TrioBrigantin
 
 				if (superSpawnChance == 1)
 				{
-					InstEnemy(ACouteauxTiré_Manager.instance.superEnemy, _position);
+                    InstEnemy(ACouteauxTiré_Manager.instance.superEnemy, _position);
+					superEnemyIsSpawned = true;
 				}
 				else
 				{
