@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   needLock: 1
+  superEnemyHey: ttt
+  goodLockSound: LockOnEnemy
+  deathSound: EnemyDeath
+  defeatSound: PistolHammer
 --- !u!212 &4102397216850528785
 SpriteRenderer:
   m_ObjectHideFlags: 0

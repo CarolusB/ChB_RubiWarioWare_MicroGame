@@ -26,9 +26,10 @@ namespace TrioBrigantin
             //target enemy
             [HideInInspector] public Enemy targetEnemy = null;
 
-			//Lock feedback
+			[Header("Feedback fields")]
 			[SerializeField] GameObject goodLock;
 			[SerializeField] GameObject wrongLock;
+			[SerializeField] string anyLockSound;
 			#endregion
 			private void Awake()
             {
@@ -85,7 +86,8 @@ namespace TrioBrigantin
                     {
 						Instantiate(wrongLock, transform.position, Quaternion.identity);
 					}
-					
+
+					ACouteauxTiré_Manager.instance.soundManager.Play(anyLockSound);
 					ACouteauxTiré_Manager.instance.MinusAmmo();
 				}
 			}

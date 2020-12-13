@@ -59,6 +59,7 @@ MonoBehaviour:
   currentTime: 0
   soundManager: {fileID: 1017621273369470957}
   numberOfEnemies: 3
+  enemiesAlive: []
   enemiesKilled: []
   baseEnemy: {fileID: 4102397216850529005, guid: 17e20a334547dcf4097384fab710a1fb,
     type: 3}

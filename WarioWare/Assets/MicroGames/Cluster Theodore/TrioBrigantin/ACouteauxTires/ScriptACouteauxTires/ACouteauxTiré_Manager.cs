@@ -17,7 +17,9 @@ namespace TrioBrigantin
 
             [SerializeField] int numberOfEnemies; //Serialize field when testing
             int ammo;
-            [HideInInspector] public List<GameObject> enemiesKilled = new List<GameObject>();
+            [HideInInspector] public List<Enemy> enemiesAlive = new List<Enemy>();
+            [HideInInspector] public List<Enemy> enemiesKilled = new List<Enemy>();
+            bool resultSent = false;
 
             public GameObject baseEnemy;
             public GameObject superEnemy;
@@ -114,14 +116,30 @@ namespace TrioBrigantin
             public override void TimedUpdate()
             {
                 Debug.Log("Ennemies locked: " + enemiesKilled.Count);
+                
+                if (resultSent)
+                    return;
 
                 if ((Tick == 8 || ammo == 0) && enemiesKilled.Count < numberOfEnemies)
                 {
                     Manager.Instance.Result(false);
+                    foreach(Enemy enemy in enemiesAlive)
+                    {
+                        soundManager.Play(enemy.defeatSound);
+                    }
+
+                    resultSent = true;
                 }
                 else if (ammo == 0 && enemiesKilled.Count == numberOfEnemies)
                 {
                     Manager.Instance.Result(true);
+                    soundManager.Play("KnifeHit");
+                    foreach(Enemy enemy in enemiesKilled)
+                    {
+                        soundManager.Play(enemy.deathSound);
+                    }
+
+                    resultSent = true;
                 }
             }
 

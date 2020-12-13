@@ -19,6 +19,12 @@ namespace TrioBrigantin
 
 			[Range(1,2)]
 			[SerializeField] int needLock = 1;
+
+			[Header("Feedback fields")]
+			[SerializeField] string superEnemyHey;
+			[SerializeField] string goodLockSound;
+			public string deathSound;
+			public string defeatSound;
 			#endregion
 
 			// Start is called before the first frame update
@@ -52,12 +58,17 @@ namespace TrioBrigantin
             {
 				needLock--;
 
-				if(needLock == 0)
+				if(needLock == 1)
+                {
+					ACouteauxTiré_Manager.instance.soundManager.Play(superEnemyHey);
+				}
+				else if(needLock == 0)
                 {
 					detectZone.enabled = false;
 					CrosshairController.instance.targetEnemy = null;
-					ACouteauxTiré_Manager.instance.enemiesKilled.Add(gameObject);
+					ACouteauxTiré_Manager.instance.enemiesKilled.Add(this);
 					mySprite.color = Color.magenta;
+					ACouteauxTiré_Manager.instance.soundManager.Play(goodLockSound);
 				}
             }
         }

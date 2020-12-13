@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   needLock: 2
+  superEnemyHey: SuperEnemyHey
+  goodLockSound: LockOnEnemy
+  deathSound: SuperEnemyDeath
+  defeatSound: SuperEnemySnicker
 --- !u!212 &4102397216850528785
 SpriteRenderer:
   m_ObjectHideFlags: 0
