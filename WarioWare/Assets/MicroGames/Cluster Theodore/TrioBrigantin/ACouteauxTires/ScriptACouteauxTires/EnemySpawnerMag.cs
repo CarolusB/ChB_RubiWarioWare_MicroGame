@@ -72,7 +72,9 @@ namespace TrioBrigantin
 
 			void InstEnemy(GameObject _enemyType, int _position)
             {
-				Instantiate(_enemyType, spawnPoints[_position].transform.position, Quaternion.identity);
+				GameObject enemySpawned;
+				enemySpawned = Instantiate(_enemyType, spawnPoints[_position].transform.position, Quaternion.identity);
+				enemySpawned.transform.SetParent(gameObject.transform);
 				enemiesLeftToSpawn--;
 			}
 

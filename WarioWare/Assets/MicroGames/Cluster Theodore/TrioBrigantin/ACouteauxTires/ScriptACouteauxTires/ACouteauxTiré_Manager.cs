@@ -122,6 +122,7 @@ namespace TrioBrigantin
             void InstantiateSpawner(GameObject _spawnSet)
             {
                 chosenSpawnSet = Instantiate(_spawnSet, spawnSetAnchor.transform.position, Quaternion.identity);
+                chosenSpawnSet.transform.SetParent(spawnSetAnchor.transform);
                 chosenSpawner = chosenSpawnSet.GetComponent<EnemySpawnerMag>();
                 chosenSpawner.GetEnemyNumber(numberOfEnemies, doSuperEnemySpawning);
                 chosenSpawner.SpawnBehavior();
