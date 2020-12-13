@@ -42,6 +42,28 @@ namespace TrioBrigantin
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
+                
+                switch (bpm)
+                {
+                    case 60:
+                        CrosshairController.instance.movementSpeed = 6.5f;
+                        break;
+
+                    case 90:
+                        CrosshairController.instance.movementSpeed = 8;
+                        break;
+
+                    case 120:
+                        CrosshairController.instance.movementSpeed = 10;
+                        break;
+
+                    case 140:
+                        CrosshairController.instance.movementSpeed = 13;
+                        break;
+
+                    default:
+                        break;
+                }
 
                 switch (currentDifficulty)
                 {

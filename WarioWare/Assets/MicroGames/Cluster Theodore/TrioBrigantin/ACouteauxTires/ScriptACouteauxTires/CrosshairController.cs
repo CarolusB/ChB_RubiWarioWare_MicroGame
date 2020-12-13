@@ -13,7 +13,7 @@ namespace TrioBrigantin
 		{
 			#region Variables
 			[Range(0.1f, 500f)]
-			[SerializeField] float movementSpeed = 1;
+			public float movementSpeed = 1;
 
 			Rigidbody2D crosshairRb;
 
