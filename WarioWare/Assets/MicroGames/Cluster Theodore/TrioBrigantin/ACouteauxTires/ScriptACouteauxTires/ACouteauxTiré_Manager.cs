@@ -69,12 +69,12 @@ namespace TrioBrigantin
 
                 switch (currentDifficulty)
                 {
-                    case Manager.Difficulty.EASY:
+                    case Difficulty.EASY:
                         numberOfEnemies = 3;
                         ammo = numberOfEnemies;
                         break;
 
-                    case Manager.Difficulty.MEDIUM:
+                    case Difficulty.MEDIUM:
                         numberOfEnemies = 4;
                         doSuperEnemySpawning = DecideSuperEnemySpawn();
 
@@ -85,7 +85,7 @@ namespace TrioBrigantin
 
                         break;
 
-                    case Manager.Difficulty.HARD:
+                    case Difficulty.HARD:
                         numberOfEnemies = 5;
                         doSuperEnemySpawning = DecideSuperEnemySpawn();
 

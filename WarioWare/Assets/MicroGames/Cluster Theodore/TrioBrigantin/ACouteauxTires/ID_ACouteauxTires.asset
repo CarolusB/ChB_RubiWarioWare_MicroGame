@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 0
   trio: Brigantin
-  haptiqueChal: 0
-  inputChal: 0
   indexEnum: 0
   verbe: Verrouille-les !
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 6d6c8e8566b0f174bafa03f5cc48c3d5, type: 3}
     required: 0
     buildIndex: 2
+  inputs: {fileID: 0}
   currentDifficulty: 0
+  idWeight: 0
+  hasBarrel: 0
