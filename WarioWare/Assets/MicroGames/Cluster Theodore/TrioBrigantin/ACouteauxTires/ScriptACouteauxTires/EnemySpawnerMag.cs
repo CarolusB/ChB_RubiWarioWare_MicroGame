@@ -48,9 +48,9 @@ namespace TrioBrigantin
                     }
                     else
                     {
-						int spawnChance = Random.Range(1, 11);
+						int spawnChance = Random.Range(1, 101);
 
-						if(spawnChance <= 4)
+						if(spawnChance <= 42)
                         {
 							if(doSpawnSuperEnemy && !superEnemyIsSpawned)
                             {
@@ -81,9 +81,9 @@ namespace TrioBrigantin
 
 			void ChanceOfSuperSpawn(int _position)
             {
-				int superSpawnChance = Random.Range(1, 3);
+				int superSpawnChance = Random.Range(1, 101);
 
-				if (superSpawnChance == 1)
+				if (superSpawnChance <= 45)
 				{
                     InstEnemy(ACouteauxTiré_Manager.instance.superEnemy, _position);
 					superEnemyIsSpawned = true;
