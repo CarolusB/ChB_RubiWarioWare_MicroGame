@@ -48,7 +48,7 @@ namespace TrioBrigantin
                 switch (bpm)
                 {
                     case 60:
-                        CrosshairController.instance.movementSpeed = 6.5f;
+                        CrosshairController.instance.movementSpeed = 6.7f;
                         break;
 
                     case 90:
@@ -56,11 +56,11 @@ namespace TrioBrigantin
                         break;
 
                     case 120:
-                        CrosshairController.instance.movementSpeed = 10;
+                        CrosshairController.instance.movementSpeed = 9.7f;
                         break;
 
                     case 140:
-                        CrosshairController.instance.movementSpeed = 13;
+                        CrosshairController.instance.movementSpeed = 12.2f;
                         break;
 
                     default:

@@ -48,9 +48,9 @@ namespace TrioBrigantin
                     }
                     else
                     {
-						int spawnChance = Random.Range(1, 5);
+						int spawnChance = Random.Range(1, 11);
 
-						if(spawnChance == 1)
+						if(spawnChance <= 4)
                         {
 							if(doSpawnSuperEnemy && !superEnemyIsSpawned)
                             {
