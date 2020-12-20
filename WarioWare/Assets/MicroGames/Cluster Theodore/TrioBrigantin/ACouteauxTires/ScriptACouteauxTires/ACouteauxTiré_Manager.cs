@@ -96,7 +96,8 @@ namespace TrioBrigantin
 
                         break;
                 }
-                
+
+                AmmoCounter.instance.InitAmmoCounter(ammo);
                 InstantiateSpawner(spawnSets[(int)currentDifficulty]);
 
                 Debug.Log("Ammo left: " + ammo);
@@ -147,6 +148,7 @@ namespace TrioBrigantin
             public void MinusAmmo()
             {
                 ammo--;
+                AmmoCounter.instance.DiscountKnife(ammo);
                 Debug.Log("Ammo left: " + ammo);
             }
 
