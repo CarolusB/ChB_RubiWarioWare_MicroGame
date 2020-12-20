@@ -27,7 +27,7 @@ namespace TrioBrigantin
             [HideInInspector] public Enemy targetEnemy = null;
 
 			[Header("Feedback fields")]
-			[SerializeField] GameObject goodLock;
+			public GameObject goodLock;
 			[SerializeField] GameObject wrongLock;
 			[SerializeField] string anyLockSound;
 			#endregion
@@ -80,7 +80,6 @@ namespace TrioBrigantin
 					if(targetEnemy != null)
                     {
 						targetEnemy.TakeLock();
-						Instantiate(goodLock, transform.position, Quaternion.identity);
 					}
                     else
                     {

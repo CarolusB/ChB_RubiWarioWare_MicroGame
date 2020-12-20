@@ -15,7 +15,7 @@ namespace TrioBrigantin
 			BoxCollider2D detectZone;
 
 			//placeholder feedbacks
-			SpriteRenderer mySprite;
+			[SerializeField] SpriteRenderer mySprite;
 
 			[Range(1,2)]
 			[SerializeField] int needLock = 1;
@@ -31,7 +31,6 @@ namespace TrioBrigantin
 			void Start()
 			{
 				detectZone = GetComponent<BoxCollider2D>();
-				mySprite = GetComponent<SpriteRenderer>();
 			}
 
             #region Trigger calls
@@ -67,6 +66,7 @@ namespace TrioBrigantin
 					detectZone.enabled = false;
 					CrosshairController.instance.targetEnemy = null;
 					ACouteauxTiré_Manager.instance.enemiesKilled.Add(this);
+					Instantiate(CrosshairController.instance.goodLock, transform.position, Quaternion.identity);
 					mySprite.color = Color.magenta;
 					ACouteauxTiré_Manager.instance.soundManager.Play(goodLockSound);
 				}
