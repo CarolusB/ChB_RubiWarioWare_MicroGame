@@ -70,7 +70,7 @@ MonoBehaviour:
   - {fileID: 8238406619026050948, guid: 086b3af8f1fc6de45a05d497a2d39af5, type: 3}
   - {fileID: 8238406619026050948, guid: 086b3af8f1fc6de45a05d497a2d39af5, type: 3}
   spawnSetAnchor: {fileID: 0}
-  superEnemyChance: 12
+  superEnemyChance: 15
 --- !u!114 &1017621273369470957
 MonoBehaviour:
   m_ObjectHideFlags: 0

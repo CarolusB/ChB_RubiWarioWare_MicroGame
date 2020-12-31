@@ -75,6 +75,8 @@ namespace TrioBrigantin
 				GameObject enemySpawned;
 				enemySpawned = Instantiate(_enemyType, spawnPoints[_position].transform.position, Quaternion.identity);
 				enemySpawned.transform.SetParent(gameObject.transform);
+				enemySpawned.GetComponent<Enemy>().mySprite.sortingOrder = _position + 2;
+				enemySpawned.GetComponent<Enemy>().barrelSprite.sortingOrder = _position + 2;
 				ACouteauxTiré_Manager.instance.enemiesAlive.Add(enemySpawned.GetComponent<Enemy>());
 				enemiesLeftToSpawn--;
 			}

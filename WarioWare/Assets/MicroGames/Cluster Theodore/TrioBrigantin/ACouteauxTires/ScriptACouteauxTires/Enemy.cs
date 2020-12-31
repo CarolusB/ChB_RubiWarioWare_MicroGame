@@ -15,7 +15,8 @@ namespace TrioBrigantin
 			BoxCollider2D detectZone;
 
 			//placeholder feedbacks
-			[SerializeField] SpriteRenderer mySprite;
+			public SpriteRenderer mySprite;
+			public SpriteRenderer barrelSprite;
 
 			[Range(1,2)]
 			[SerializeField] int needLock = 1;
@@ -25,12 +26,14 @@ namespace TrioBrigantin
 			[SerializeField] string goodLockSound;
 			public string deathSound;
 			public string defeatSound;
+			[SerializeField] AmmoCounter needLockCounter;
 			#endregion
 
 			// Start is called before the first frame update
 			void Start()
 			{
 				detectZone = GetComponent<BoxCollider2D>();
+				needLockCounter.InitAmmoCounter(needLock);
 			}
 
             #region Trigger calls
@@ -56,6 +59,7 @@ namespace TrioBrigantin
 			public void TakeLock()
             {
 				needLock--;
+				needLockCounter.DiscountKnife(needLock);
 
 				if(needLock == 1)
                 {

@@ -9,24 +9,14 @@ namespace TrioBrigantin
 		public class AmmoCounter : MonoBehaviour
 		{
 			#region Variables
-			static public AmmoCounter instance;
 			[SerializeField] GameObject[] knifeIcons;
-			#endregion
-
-			private void Awake()
-			{
-				if (instance == null)
-					instance = this;
-				else
-					Destroy(gameObject);
-				
-				foreach(GameObject icon in knifeIcons)
-                {
+            #endregion
+            private void Awake()
+            {
+				foreach (GameObject icon in knifeIcons)
 					icon.SetActive(false);
-                }
-			}
-
-			public void InitAmmoCounter(int _amount)
+            }
+            public void InitAmmoCounter(int _amount)
             {
 				for(int i = 0; i < _amount; i++)
                 {
