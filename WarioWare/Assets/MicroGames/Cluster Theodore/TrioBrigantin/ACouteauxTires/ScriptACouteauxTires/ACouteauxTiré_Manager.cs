@@ -20,6 +20,7 @@ namespace TrioBrigantin
             [HideInInspector] public List<Enemy> enemiesAlive = new List<Enemy>();
             [HideInInspector] public List<Enemy> enemiesKilled = new List<Enemy>();
             bool resultSent = false;
+            [SerializeField] AmmoCounter timeTick;
 
             public GameObject baseEnemy;
             public GameObject superEnemy;
@@ -98,8 +99,9 @@ namespace TrioBrigantin
                 }
 
                 InstantiateSpawner(spawnSets[(int)currentDifficulty]);
-
+                timeTick.InitAmmoCounter(8);
                 Debug.Log("Ammo left: " + ammo);
+                Debug.Log(Tick);
             }
 
             //FixedUpdate is called on a fixed time.
@@ -116,9 +118,12 @@ namespace TrioBrigantin
             public override void TimedUpdate()
             {
                 Debug.Log("Ennemies locked: " + enemiesKilled.Count);
-                
+                Debug.Log(Tick);
+
                 if (resultSent)
                     return;
+
+                timeTick.DiscountKnife(8 - Tick);
 
                 if ((Tick == 8 || ammo == 0) && enemiesKilled.Count < numberOfEnemies)
                 {
