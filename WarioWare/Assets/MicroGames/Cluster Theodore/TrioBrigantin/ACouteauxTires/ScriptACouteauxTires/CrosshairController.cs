@@ -83,7 +83,7 @@ namespace TrioBrigantin
 					}
                     else
                     {
-						Instantiate(wrongLock, transform.position, Quaternion.identity);
+						Instantiate(wrongLock, transform.position, Quaternion.identity).transform.SetParent(gameObject.transform);
 					}
 
 					ACouteauxTiré_Manager.instance.soundManager.Play(anyLockSound);

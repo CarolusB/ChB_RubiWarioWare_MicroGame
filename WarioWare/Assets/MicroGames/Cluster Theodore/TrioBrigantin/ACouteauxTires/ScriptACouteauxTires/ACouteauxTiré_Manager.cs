@@ -32,6 +32,13 @@ namespace TrioBrigantin
             bool doSuperEnemySpawning;
             [Range(0, 15)]
             [SerializeField] int superEnemyChance = 4; //Probability of Super Enemy, 0 means will be sure to not spawn
+
+            [Header("For End Screen")]
+            [SerializeField] GameObject gameScene;
+            [SerializeField] GameObject winScene;
+            [SerializeField] GameObject loseScene;
+            bool onEndScreen = false;
+            bool winCon;
             #endregion
 
             private void Awake()
@@ -125,25 +132,40 @@ namespace TrioBrigantin
 
                 timeTick.DiscountKnife(8 - Tick);
 
-                if ((Tick == 8 || ammo == 0) && enemiesKilled.Count < numberOfEnemies)
+                if(ammo == 0 && !onEndScreen)
                 {
-                    Manager.Instance.Result(false);
-                    foreach(Enemy enemy in enemiesAlive)
+                    gameScene.SetActive(false);
+
+                    if (enemiesKilled.Count < numberOfEnemies)
                     {
-                        soundManager.Play(enemy.defeatSound);
+                        loseScene.SetActive(true);
+                        if (doSuperEnemySpawning)
+                            soundManager.Play("SuperEnemySnicker");
+                        soundManager.Play("PistolHammer");
+
+                        winCon = false;
+                    }
+                    else if (enemiesKilled.Count == numberOfEnemies)
+                    {
+                        winScene.SetActive(true);
+                        soundManager.Play("KnifeHit");
+                        if(doSuperEnemySpawning)
+                            soundManager.Play("SuperEnemyDeath");
+                        soundManager.Play("EnemyDeath");
+
+                        winCon = true;
                     }
 
-                    resultSent = true;
+                    onEndScreen = true;
                 }
-                else if (ammo == 0 && enemiesKilled.Count == numberOfEnemies)
-                {
-                    Manager.Instance.Result(true);
-                    soundManager.Play("KnifeHit");
-                    foreach(Enemy enemy in enemiesKilled)
-                    {
-                        soundManager.Play(enemy.deathSound);
-                    }
 
+                if (Tick == 8)
+                {
+                    if (!onEndScreen)
+                        Manager.Instance.Result(false);
+                    else
+                        Manager.Instance.Result(winCon);
+                    
                     resultSent = true;
                 }
             }
