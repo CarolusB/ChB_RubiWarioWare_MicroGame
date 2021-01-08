@@ -59,7 +59,7 @@ namespace TrioBrigantin
 
 				if (horizontal < -0.15 || horizontal > 0.15 || vertical < -0.15 || vertical > 0.15)
                 {
-					movementVector = new Vector2(-horizontal, -vertical);
+					movementVector = new Vector2(horizontal, -vertical);
 				}
                 else
                 {
