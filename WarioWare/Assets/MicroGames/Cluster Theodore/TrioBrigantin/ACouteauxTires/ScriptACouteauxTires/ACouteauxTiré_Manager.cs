@@ -25,7 +25,7 @@ namespace TrioBrigantin
             public GameObject baseEnemy;
             public GameObject superEnemy;
             [SerializeField] GameObject[] spawnSets;
-            [SerializeField] GameObject spawnSetAnchor;
+            public GameObject spawnSetAnchor;
             GameObject chosenSpawnSet;
             EnemySpawnerMag chosenSpawner;
 
