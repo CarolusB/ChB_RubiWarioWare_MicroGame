@@ -30,7 +30,7 @@ namespace TrioBrigantin
             EnemySpawnerMag chosenSpawner;
 
             bool doSuperEnemySpawning;
-            [Range(0, 15)]
+            [Range(0, 100)]
             [SerializeField] int superEnemyChance = 4; //Probability of Super Enemy, 0 means will be sure to not spawn
 
             [Header("For End Screen")]
