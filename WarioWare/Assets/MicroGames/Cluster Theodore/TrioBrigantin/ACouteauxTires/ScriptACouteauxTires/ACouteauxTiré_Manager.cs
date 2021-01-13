@@ -15,7 +15,7 @@ namespace TrioBrigantin
 
             [Header("Enemy Setup Fields")]
 
-            [SerializeField] int numberOfEnemies; //Serialize field when testing
+            int numberOfEnemies; //Serialize field when testing
             int ammo;
             [HideInInspector] public List<Enemy> enemiesAlive = new List<Enemy>();
             [HideInInspector] public List<Enemy> enemiesKilled = new List<Enemy>();
@@ -32,6 +32,13 @@ namespace TrioBrigantin
             bool doSuperEnemySpawning;
             [Range(0, 100)]
             [SerializeField] int superEnemyChance = 4; //Probability of Super Enemy, 0 means will be sure to not spawn
+
+            [Header("CrossHair BPM balance")]
+            [Range(5f, 15f)]
+            [SerializeField] float slowSpeed = 6.4f;
+            [SerializeField] float medSpeed = 8f;
+            [SerializeField] float fastSpeed = 9.7f;
+            [SerializeField] float superSpeed = 12.2f;
 
             [Header("For End Screen")]
             [SerializeField] GameObject gameScene;
@@ -56,19 +63,19 @@ namespace TrioBrigantin
                 switch (bpm)
                 {
                     case 60:
-                        CrosshairController.instance.movementSpeed = 6.7f;
+                        CrosshairController.instance.movementSpeed = slowSpeed;
                         break;
 
                     case 90:
-                        CrosshairController.instance.movementSpeed = 8;
+                        CrosshairController.instance.movementSpeed = medSpeed;
                         break;
 
                     case 120:
-                        CrosshairController.instance.movementSpeed = 9.7f;
+                        CrosshairController.instance.movementSpeed = fastSpeed;
                         break;
 
                     case 140:
-                        CrosshairController.instance.movementSpeed = 12.2f;
+                        CrosshairController.instance.movementSpeed = superSpeed;
                         break;
 
                     default:
