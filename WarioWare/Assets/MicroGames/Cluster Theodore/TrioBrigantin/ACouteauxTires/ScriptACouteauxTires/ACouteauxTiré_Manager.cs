@@ -36,8 +36,11 @@ namespace TrioBrigantin
             [Header("CrossHair BPM balance")]
             [Range(5f, 15f)]
             [SerializeField] float slowSpeed = 6.4f;
+            [Range(5f, 15f)]
             [SerializeField] float medSpeed = 8f;
+            [Range(5f, 15f)]
             [SerializeField] float fastSpeed = 9.7f;
+            [Range(5f, 15f)]
             [SerializeField] float superSpeed = 12.2f;
 
             [Header("For End Screen")]
