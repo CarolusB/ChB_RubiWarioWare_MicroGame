@@ -601,10 +601,10 @@ MonoBehaviour:
   - {fileID: 8238406619026050948, guid: 086b3af8f1fc6de45a05d497a2d39af5, type: 3}
   spawnSetAnchor: {fileID: 0}
   superEnemyChance: 70
-  slowSpeed: 6.4
-  medSpeed: 7.6
-  fastSpeed: 8.8
-  superSpeed: 10.5
+  slowSpeed: 6.1
+  medSpeed: 7.2
+  fastSpeed: 8.4
+  superSpeed: 10.4
   gameScene: {fileID: 0}
   winScene: {fileID: 0}
   loseScene: {fileID: 0}

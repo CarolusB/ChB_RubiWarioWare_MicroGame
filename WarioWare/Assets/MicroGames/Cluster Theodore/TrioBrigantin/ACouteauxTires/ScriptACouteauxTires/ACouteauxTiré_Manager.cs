@@ -69,22 +69,22 @@ namespace TrioBrigantin
                         CrosshairController.instance.movementSpeed = slowSpeed;
                         break;
 
-                    case 90:
+                    case 80:
                         CrosshairController.instance.movementSpeed = medSpeed;
                         break;
 
-                    case 120:
+                    case 100:
                         CrosshairController.instance.movementSpeed = fastSpeed;
                         break;
 
-                    case 140:
+                    case 120:
                         CrosshairController.instance.movementSpeed = superSpeed;
                         break;
 
                     default:
                         break;
                 }
-
+                Debug.Log("crh Speed: " + CrosshairController.instance.movementSpeed);
                 switch (currentDifficulty)
                 {
                     case Difficulty.EASY:
