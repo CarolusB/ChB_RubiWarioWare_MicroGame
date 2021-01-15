@@ -17,10 +17,12 @@ namespace TrioBrigantin
 
             int numberOfEnemies; //Serialize field when testing
             int ammo;
+            int misses = 0;
             [HideInInspector] public List<Enemy> enemiesAlive = new List<Enemy>();
             [HideInInspector] public List<Enemy> enemiesKilled = new List<Enemy>();
             bool resultSent = false;
             [SerializeField] AmmoCounter timeTick;
+            [SerializeField] AmmoCounter ammoCount;
 
             public GameObject baseEnemy;
             public GameObject superEnemy;
@@ -89,32 +91,37 @@ namespace TrioBrigantin
                 {
                     case Difficulty.EASY:
                         numberOfEnemies = 3;
-                        ammo = numberOfEnemies;
+                        //ammo = numberOfEnemies;
                         break;
 
                     case Difficulty.MEDIUM:
                         numberOfEnemies = 4;
-                        doSuperEnemySpawning = DecideSuperEnemySpawn();
+                        //doSuperEnemySpawning = DecideSuperEnemySpawn();
 
-                        if (doSuperEnemySpawning)
-                            ammo = numberOfEnemies + 1;
-                        else
-                            ammo = numberOfEnemies;
+                        //if (doSuperEnemySpawning)
+                        //    ammo = numberOfEnemies + 1;
+                        //else
+                        //    ammo = numberOfEnemies;
 
                         break;
 
                     case Difficulty.HARD:
                         numberOfEnemies = 5;
-                        doSuperEnemySpawning = DecideSuperEnemySpawn();
+                        //doSuperEnemySpawning = DecideSuperEnemySpawn();
 
-                        if (doSuperEnemySpawning)
-                            ammo = numberOfEnemies + 1;
-                        else
-                            ammo = numberOfEnemies;
+                        //if (doSuperEnemySpawning)
+                        //    ammo = numberOfEnemies + 1;
+                        //else
+                        //    ammo = numberOfEnemies;
 
                         break;
                 }
+                
+                ammo = numberOfEnemies + 1;
+                if (doSuperEnemySpawning)
+                    ammo++;
 
+                ammoCount.InitAmmoCounter(ammo);
                 InstantiateSpawner(spawnSets[(int)currentDifficulty]);
                 timeTick.InitAmmoCounter(8);
                 Debug.Log("Ammo left: " + ammo);
@@ -129,6 +136,34 @@ namespace TrioBrigantin
                 //{
                 //    Manager.Instance.Result(true);
                 //}
+                if (/*ammo == 0 && */!onEndScreen)
+                {
+                    if (misses >= 2)
+                    {
+                        gameScene.SetActive(false);
+                        ammoCount.gameObject.SetActive(false);
+                        loseScene.SetActive(true);
+                        if (doSuperEnemySpawning)
+                            soundManager.Play("SuperEnemySnicker");
+                        soundManager.Play("PistolHammer");
+
+                        winCon = false;
+                        onEndScreen = true;
+                    }
+                    else if (enemiesKilled.Count == numberOfEnemies)
+                    {
+                        gameScene.SetActive(false);
+                        ammoCount.gameObject.SetActive(false);
+                        winScene.SetActive(true);
+                        soundManager.Play("KnifeHit");
+                        if (doSuperEnemySpawning)
+                            soundManager.Play("SuperEnemyDeath");
+                        soundManager.Play("EnemyDeath");
+
+                        winCon = true;
+                        onEndScreen = true;
+                    }
+                }
             }
 
             //TimedUpdate is called once every tick.
@@ -141,33 +176,6 @@ namespace TrioBrigantin
                     return;
 
                 timeTick.DiscountKnife(8 - Tick);
-
-                if(ammo == 0 && !onEndScreen)
-                {
-                    gameScene.SetActive(false);
-
-                    if (enemiesKilled.Count < numberOfEnemies)
-                    {
-                        loseScene.SetActive(true);
-                        if (doSuperEnemySpawning)
-                            soundManager.Play("SuperEnemySnicker");
-                        soundManager.Play("PistolHammer");
-
-                        winCon = false;
-                    }
-                    else if (enemiesKilled.Count == numberOfEnemies)
-                    {
-                        winScene.SetActive(true);
-                        soundManager.Play("KnifeHit");
-                        if(doSuperEnemySpawning)
-                            soundManager.Play("SuperEnemyDeath");
-                        soundManager.Play("EnemyDeath");
-
-                        winCon = true;
-                    }
-
-                    onEndScreen = true;
-                }
 
                 if (Tick == 8)
                 {
@@ -185,6 +193,11 @@ namespace TrioBrigantin
             {
                 ammo--;
                 Debug.Log("Ammo left: " + ammo);
+            }
+            public void PlusMiss()
+            {
+                misses++;
+                Debug.Log("Missed: " + misses);
             }
 
             public bool GetAmmoZero()
