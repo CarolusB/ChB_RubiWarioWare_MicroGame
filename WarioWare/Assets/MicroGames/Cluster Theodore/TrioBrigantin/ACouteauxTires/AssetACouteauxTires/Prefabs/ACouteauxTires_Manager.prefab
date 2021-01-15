@@ -1166,7 +1166,7 @@ MonoBehaviour:
   slowSpeed: 6.1
   medSpeed: 7.2
   fastSpeed: 8.4
-  superSpeed: 10.4
+  superSpeed: 10.7
   gameScene: {fileID: 0}
   winScene: {fileID: 0}
   loseScene: {fileID: 0}

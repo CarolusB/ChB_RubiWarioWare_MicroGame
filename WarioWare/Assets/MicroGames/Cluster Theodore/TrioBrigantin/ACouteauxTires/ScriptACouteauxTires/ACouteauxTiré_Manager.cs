@@ -96,7 +96,7 @@ namespace TrioBrigantin
 
                     case Difficulty.MEDIUM:
                         numberOfEnemies = 4;
-                        //doSuperEnemySpawning = DecideSuperEnemySpawn();
+                        doSuperEnemySpawning = DecideSuperEnemySpawn();
 
                         //if (doSuperEnemySpawning)
                         //    ammo = numberOfEnemies + 1;
@@ -107,7 +107,7 @@ namespace TrioBrigantin
 
                     case Difficulty.HARD:
                         numberOfEnemies = 5;
-                        //doSuperEnemySpawning = DecideSuperEnemySpawn();
+                        doSuperEnemySpawning = DecideSuperEnemySpawn();
 
                         //if (doSuperEnemySpawning)
                         //    ammo = numberOfEnemies + 1;
