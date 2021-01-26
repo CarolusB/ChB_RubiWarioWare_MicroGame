@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Testing;
 
@@ -91,7 +90,7 @@ namespace TrioBrigantin
                     default:
                         break;
                 }
-                Debug.Log("crh Speed: " + CrosshairController.instance.movementSpeed);
+                //Debug.Log("crh Speed: " + CrosshairController.instance.movementSpeed);
                 switch (currentDifficulty)
                 {
                     case Difficulty.EASY:
@@ -129,8 +128,8 @@ namespace TrioBrigantin
                 ammoCount.InitAmmoCounter(ammo);
                 InstantiateSpawner(spawnSets[(int)currentDifficulty]);
                 timeTick.InitAmmoCounter(8);
-                Debug.Log("Ammo left: " + ammo);
-                Debug.Log(Tick);
+                //Debug.Log("Ammo left: " + ammo);
+                //Debug.Log(Tick);
             }
 
             //FixedUpdate is called on a fixed time.
@@ -174,8 +173,8 @@ namespace TrioBrigantin
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                Debug.Log("Ennemies locked: " + enemiesKilled.Count);
-                Debug.Log(Tick);
+                //Debug.Log("Ennemies locked: " + enemiesKilled.Count);
+                //Debug.Log(Tick);
 
                 if (resultSent)
                     return;
@@ -198,12 +197,12 @@ namespace TrioBrigantin
             {
                 ammo--;
                 ammoCount.DiscountKnife(ammo);
-                Debug.Log("Ammo left: " + ammo);
+                //Debug.Log("Ammo left: " + ammo);
             }
             public void PlusMiss()
             {
                 misses++;
-                Debug.Log("Missed: " + misses);
+                //Debug.Log("Missed: " + misses);
             }
 
             public bool GetAmmoZero()
@@ -222,7 +221,7 @@ namespace TrioBrigantin
                 chosenSpawner = chosenSpawnSet.GetComponent<EnemySpawnerMag>();
                 chosenSpawner.GetEnemyNumber(numberOfEnemies, doSuperEnemySpawning);
                 chosenSpawner.SpawnBehavior();
-                Debug.Log(chosenSpawnSet.name + " was instatiated");
+                //Debug.Log(chosenSpawnSet.name + " was instatiated");
             }
 
             bool DecideSuperEnemySpawn()

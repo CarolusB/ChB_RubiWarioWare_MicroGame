@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TrioBrigantin
 {
@@ -73,7 +71,7 @@ namespace TrioBrigantin
             {
                 if (Input.GetButtonDown("A_Button"))
                 {
-					Debug.Log("Lock button pressed");
+					//Debug.Log("Lock button pressed");
 					if (ACouteauxTiré_Manager.instance.GetAmmoZero())
 						return;
 					
