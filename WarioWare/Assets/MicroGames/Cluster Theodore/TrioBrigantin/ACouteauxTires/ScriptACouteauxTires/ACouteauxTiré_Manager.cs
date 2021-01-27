@@ -20,7 +20,7 @@ namespace TrioBrigantin
             [HideInInspector] public List<Enemy> enemiesAlive = new List<Enemy>();
             [HideInInspector] public List<Enemy> enemiesKilled = new List<Enemy>();
             bool resultSent = false;
-            [SerializeField] AmmoCounter timeTick;
+            //[SerializeField] AmmoCounter timeTick;
             [SerializeField] AmmoCounter ammoCount;
 
             public GameObject baseEnemy;
@@ -127,7 +127,7 @@ namespace TrioBrigantin
 
                 ammoCount.InitAmmoCounter(ammo);
                 InstantiateSpawner(spawnSets[(int)currentDifficulty]);
-                timeTick.InitAmmoCounter(8);
+                //timeTick.InitAmmoCounter(8);
                 //Debug.Log("Ammo left: " + ammo);
                 //Debug.Log(Tick);
             }
@@ -179,7 +179,7 @@ namespace TrioBrigantin
                 if (resultSent)
                     return;
 
-                timeTick.DiscountKnife(8 - Tick);
+                //timeTick.DiscountKnife(8 - Tick);
 
                 if (Tick == 8)
                 {
